@@ -11,14 +11,6 @@
 
 class monster;
 
-enum jiyva_slurp_results
-{
-    JS_NONE = 0,
-    JS_FOOD = 1,
-    JS_HP   = 2,
-    JS_MP   = 4,
-};
-
 enum ru_interference
 {
     DO_NOTHING,
@@ -28,8 +20,6 @@ enum ru_interference
 
 int chei_stat_boost(int piety = you.piety);
 void jiyva_eat_offlevel_items();
-void jiyva_slurp_bonus(int item_value, int *js);
-void jiyva_slurp_message(int js);
 void ash_init_bondage(player *y);
 void ash_check_bondage(bool msg = true);
 string ash_describe_bondage(int flags, bool level);

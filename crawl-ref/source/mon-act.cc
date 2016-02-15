@@ -2792,8 +2792,6 @@ static bool _monster_eat_item(monster* mons)
     int max_eat = roll_dice(1, 10);
     int eaten = 0;
     bool shown_msg = false;
-    piety_gain_t gain = PIETY_NONE;
-    int js = JS_NONE;
 
     // Jellies can swim, so don't check water
     for (stack_iterator si(mons->pos());
@@ -2832,13 +2830,7 @@ static bool _monster_eat_item(monster* mons)
         }
 
         if (you_worship(GOD_JIYVA))
-        {
-            gain = sacrifice_item_stack(*si, &js, quant);
-            if (gain > PIETY_NONE)
-                simple_god_message(" appreciates your sacrifice.");
-
-            jiyva_slurp_message(js);
-        }
+            jiyva_slurp_item_stack(*si, quant);
 
         if (quant >= si->quantity)
             item_was_destroyed(*si);
